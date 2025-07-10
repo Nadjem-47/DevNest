@@ -3,6 +3,8 @@ import bcrypt from "bcryptjs";
 import User from "@models/User";
 
 import {generateVerificationToken} from "@utils/generateVerificationToken";
+
+// TODO: remove verification Email when the user first signUp he can verify later
 import {sendVerificationEmail} from "src/mailtrap/mailtrap";
 
 export const signup = async (req: Request, res: Response) => {
@@ -34,19 +36,9 @@ export const signup = async (req: Request, res: Response) => {
 
     await user.save();
 
-    try {
-      await sendVerificationEmail(email, verificationToken);
-      res.status(201).json({
-        message: "Signup successful! Please check your email to verify your account.",
-      });
-    } catch (error) {
-      console.log("====================================");
-      console.log("FALIED TO SEND EMAIL ");
-      console.log("====================================");
-
-      res.status(500).json({error: "FALIED TO SEND VERIFICATION EMAIL"});
-      return;
-    }
+    res.status(201).json({
+      message: "Signup successful! Please Login to your Account",
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({error: "Internal server error"});
