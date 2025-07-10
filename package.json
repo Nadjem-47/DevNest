@@ -1,0 +1,16 @@
+{
+  "name": "devblog-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:client": "pnpm --filter client dev",
+    "dev:api": "pnpm --filter api dev",
+    "dev": "concurrently \"pnpm dev:client\" \"pnpm dev:api\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.12.4"
+}
